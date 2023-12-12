@@ -29,9 +29,9 @@ class BlogController extends BaseController
             if ($fileinfo->move("images", $fileName)) {
                 $blogs = $model->createBlog($data);
                 if ($blogs) {
-                    return redirect('/');
+                    return redirect()->to('/blogpage');
                 } else {
-                    return redirect('/');
+                    return redirect()->to('/blogpage');
                 }
             } else {
                 echo "Failed";
@@ -56,9 +56,9 @@ class BlogController extends BaseController
             if ($fileinfo->move("images", $fileName)) {
                 $res = $model->updateBlog($id, $data);
                 if ($res) {
-                    return redirect('/');
+                    return redirect()->to('/blogpage');
                 } else {
-                    return redirect('/');
+                    return redirect()->to('/blogpage');
                 }
             } else {
                 echo "Failed";
@@ -74,9 +74,9 @@ class BlogController extends BaseController
         $res = $model->deleteBlog($id);
 
         if ($res >= 1) {
-            return redirect('/');
+            return redirect()->to('/blogpage');
         } else {
-            return redirect('/');
+            return redirect()->to('/blogpage');
         }
     }
 }

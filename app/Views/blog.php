@@ -19,10 +19,11 @@
 </head>
 
 <body>
-
-    <div class="container" style="margin-top: 25px;">
+    <div class="container-fluid" style="margin-top: 25px;">
         <div class="row">
             <div class="col s12 m12">
+                <?php echo session('user'); ?>
+                <h4 class="center" style="padding-top: 20px; padding-bottom: 15px;"><b>Dashboard</b></h4>
                 <div class="card-panel">
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4"><span style="font-size: 23px; font-weight:500;">Blogs</span><a class="right waves-effect waves-light btn-small modal-trigger" href="#modal1">Create Blog</a>
