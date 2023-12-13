@@ -32,14 +32,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="password" type="password" name="password" class="validate" required>
-                                        <label for="password">Enter Password</label>
+                                        <input id="email" type="email" name="email" class="validate" required>
+                                        <label for="email">Enter Email</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="email" type="email" name="email" class="validate" required>
-                                        <label for="email">Enter Email</label>
+                                        <input id="password" type="password" name="password" class="validate" required>
+                                        <label for="password">Enter Password</label>
                                     </div>
                                 </div>
                                 <div class="row">
