@@ -50,6 +50,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                <?php
+                                // Display error message, if any
+                                if (session()->has('error')) {
+                                    echo '<p style="color: red;">' . session('error') . '</p>';
+                                }
+                                ?>
                             </form>
                         </div>
                     </div>

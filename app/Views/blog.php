@@ -149,7 +149,7 @@
                                                                 <!-- Your custom button -->
                                                                 <label for="profile_image_update<?php echo $blog['id'] ?>" class="waves-effect green btn">Update Source Image</label>
                                                                 <!-- The actual file input (hidden) -->
-                                                                <input type="file" name="profile_image" id="profile_image_update<?php echo $blog['id'] ?>" required>
+                                                                <input type="file" name="profile_image_update" id="profile_image_update<?php echo $blog['id'] ?>">
                                                                 <!-- Display the selected file name (optional) -->
                                                                 <div class="file-name" id="file-name-update<?php echo $blog['id'] ?>"></div>
                                                                 <!-- JavaScript to display the selected file name -->

@@ -49,6 +49,7 @@
                                     echo '<p style="color: red;">' . session('error') . '</p>';
                                 }
                                 ?>
+                                <h6 style="padding-top: 20px;">New User? <a style="color:#26a69a;" href="<?= base_url('registration') ?>">here to Sing-up!</a></h6>
                             </form>
                         </div>
                     </div>

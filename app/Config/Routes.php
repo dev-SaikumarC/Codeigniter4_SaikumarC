@@ -7,13 +7,13 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 // app/Config/Routes.php
-$routes->get('/', 'RegisterController::index');
+$routes->get('/', 'LoginController::index');
 $routes->post('/register/processRegistration', 'RegisterController::processRegistration');
 // $routes->get('/register/success', 'RegisterController::success');
-$routes->get('/login', 'LoginController::loginForm');
+// $routes->get('/login', 'LoginController::index');
 $routes->post('/login/processLogin', 'LoginController::processLogin');
 $routes->get('/blogpage', 'BlogController::index');
 $routes->post('/blogStore', 'BlogController::store');
 $routes->post('/updatePost', 'BlogController::update');
 $routes->post('/deletePost', 'BlogController::delete');
-
+$routes->get('registration', 'RegisterController::index');

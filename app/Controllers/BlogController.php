@@ -42,31 +42,34 @@ class BlogController extends BaseController
     }
     public function update()
     {
-        $model = new BlogModel();
-        $fileinfo = $this->request->getFile("profile_image");
         $id = $this->request->getVar('id');
+        $model = new BlogModel();
+        $fileinfo = $this->request->getFile('profile_image_update');
 
-        if (!empty($fileinfo)) {
-            $data = [
-                'title' => $this->request->getVar('title'),
-                'description' => $this->request->getVar('description'),
-                'profile_image' => $fileinfo->getName(),
-            ];
-            $fileName = $fileinfo->getName();
-            if ($fileinfo->move("images", $fileName)) {
+        $data = [
+            'title' => $this->request->getVar('title'),
+            'description' => $this->request->getVar('description'),
+        ];
+
+        if ($fileinfo->isValid() && !$fileinfo->hasMoved()) {
+            $data['profile_image'] = $fileinfo->getName();
+
+            if ($fileinfo->move("images", $data['profile_image'])) {
                 $res = $model->updateBlog($id, $data);
-                if ($res) {
-                    return redirect()->to('/blogpage');
-                } else {
-                    return redirect()->to('/blogpage');
-                }
             } else {
                 echo "Failed";
+                return;
             }
         } else {
-            echo "failed";
+            $res = $model->updateBlog($id, $data);
+        }
+        if ($res) {
+            return redirect()->to('/blogpage');
+        } else {
+            return redirect()->to('/blogpage');
         }
     }
+
     public function delete()
     {
         $id = $this->request->getVar('id');
