@@ -19,14 +19,32 @@
 </head>
 
 <body>
+    <?php
+    // Retrieve user data from session
+    $session = session();
+    $userData = $session->get('user_data');
+    // print_r($userData);
+    ?>
     <div class="container-fluid" style="margin-top: 25px;">
         <div class="row">
             <div class="col s12 m12">
-                <?php echo session('user'); ?>
-                <h4 class="center" style="padding-top: 20px; padding-bottom: 15px;"><b>Dashboard</b></h4>
-                <div class="card-panel">
+                <h5><b>Welcome: <span style="color:#26a69a;"><?php echo $userData['name']; ?></span></b></h5>
+                <div class="row" style="display: flex; align-items:center; margin-top:30px;">
+                    <div class="col m6">
+                        <h4><b>Dashboard</b></h4>
+                    </div>
+                    <div class="col m6">
+                        <?php if ($userData['profilestate'] == '1') : ?>
+                            <a class="right waves-effect waves-light btn-small" style="width:300px" href="<?php echo base_url('profile'); ?>">My Profile</a>
+                        <?php endif; ?>
+                        <?php if ($userData['profilestate'] == '0') : ?>
+                            <a class="right waves-effect waves-light btn-small" style="width:300px" href="<?php echo base_url('profilecreate'); ?>">Create Profile</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="card-panel" style="margin-top: 40px;">
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4"><span style="font-size: 23px; font-weight:500;">Blogs</span><a class="right waves-effect waves-light btn-small modal-trigger" href="#modal1">Create Blog</a>
+                        <span class="card-title activator grey-text text-darken-4"><span style="font-size: 23px; font-weight:500;">Blogs</span><a class="right waves-effect waves-light btn-small modal-trigger green" href="#modal1">Create Blog</a>
                             <div id="modal1" class="modal">
                                 <div class="modal-content">
                                     <div class="row">
@@ -72,8 +90,6 @@
                                 </div>
                             </div>
                         </span>
-
-
 
                         <table style="margin-top: 20px;">
                             <th>#</th>
@@ -200,8 +216,6 @@
                                 </tr>
                             <?php endforeach; ?>
                         </table>
-
-
                     </div>
                 </div>
             </div>

@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\RegisterModel;
+use App\Models\ProfileModel;
+// use App\Models\ProfileModel;
 // use BlogModel;
 
 class LoginController extends BaseController
@@ -43,7 +45,6 @@ class LoginController extends BaseController
     public function processLogin()
     {
         $model = new RegisterModel();
-
         // Get user input
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
@@ -53,8 +54,47 @@ class LoginController extends BaseController
             ->first();
 
         if ($user) {
+
+            // Get the user ID
+            $userId = $user['id'];
+            $profileState = 0;
+
+            $profilemodel = new ProfileModel();
+            $profiledata['users_profile'] = $profilemodel->getProfile();
+            foreach ($profiledata['users_profile'] as $profile) {
+                if ($user['id'] == $profile['id']) {
+                    // Set profile state to '1' and exit the loop
+                    $profileState = '1';
+                    // print_r($userData);
+                    break;
+                } else {
+                    $profileState = '0';
+                    break;
+                }
+            }
+            $profilemodel = new ProfileModel();
+            $userprofile = $profilemodel->where('id', $userId)->first();
+            if ($userprofile) {
+                $username = $userprofile['name'];
+                // Now $username contains the name from the user profile
+            } else {
+                // Handle the case where the user profile is not found
+                $username = "User";
+            }
+
+            // Store user data in session\
+            $session = session();
+            $userData = [
+                'userid' => $userId,
+                'profilestate' => $profileState,
+                'email' => $email,
+                'name' => $username // Note: In a real application, you should hash the password.
+            ];
+            $session->set('user_data', $userData);
             // Redirect to a dashboard or home page
-            return redirect()->to('/blogpage')->with('user', '<h5>Welcome: <span style="color: #26a69a;"><b>' .  $user['name'] . '</b></span></h5>');
+            return redirect()->to('/blogpage');
+            // return redirect()->to('/blogpage')->with('user', '<h5>Welcome: <span style="color: #26a69a;"><b>' .  $user['email'] . '</b></span></h5>');
+
         } else {
             // Invalid credentials, redirect back to login page with an error message
             return redirect()->to('/')->with('error', 'Invalid email or password');

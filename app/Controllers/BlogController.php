@@ -3,15 +3,21 @@
 namespace App\Controllers;
 
 use App\Models\BlogModel;
+use App\Models\ProfileModel;
 // use BlogModel;
 
 class BlogController extends BaseController
 {
     public function index()
     {
+        $profilemodel = new ProfileModel();
         $model = new BlogModel();
+        $session = session();
+        $userData = $session->get('user_data');
         $data['blogs'] = $model->getBlogs();
-        return view('blog', $data);
+        $profiledata['users_profile'] = $profilemodel->getProfile();
+        // print_r($userData);
+        return view('blog', $data, $userData);
     }
 
     public function store()

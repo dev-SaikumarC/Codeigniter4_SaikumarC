@@ -35,7 +35,6 @@ class RegisterController extends BaseController
     {
         $model = new RegisterModel();
         $data = [
-            'name' => $this->request->getVar('name'),
             'email' => $this->request->getVar('email'),
             'password' => $this->request->getVar('password'),
         ];

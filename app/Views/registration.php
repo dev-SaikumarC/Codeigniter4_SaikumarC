@@ -24,12 +24,12 @@
                         <h5 class="center-align"><b>Register</b></h5>
                         <div class="row">
                             <form class="col s12" action="/register/processRegistration" method="post">
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="input-field col s12">
                                         <input placeholder="Name" id="name" name="name" type="text" class="validate" required>
                                         <label for="name">Enter Your Name</label>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="email" type="email" name="email" class="validate" required>

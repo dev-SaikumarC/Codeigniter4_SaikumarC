@@ -17,3 +17,11 @@ $routes->post('/blogStore', 'BlogController::store');
 $routes->post('/updatePost', 'BlogController::update');
 $routes->post('/deletePost', 'BlogController::delete');
 $routes->get('registration', 'RegisterController::index');
+
+
+
+$routes->get('/profilecreate', 'ProfileController::createprofile');
+$routes->post('/newprofile', 'ProfileController::store');
+$routes->get('/profile', 'ProfileController::index');
+$routes->get('/updateProfile', 'ProfileController::profileupdate');
+$routes->post('/updateProfile', 'ProfileController::update');
